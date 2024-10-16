@@ -22,6 +22,18 @@ app.post('/registrar', (req, res) => {
     });
 });
 
+
+// Rota para registrar um novo usuário
+app.get('/testar-comunicacao', (req, res) => {
+
+    const nome = req.query.nome;
+    console.log(`req variavel: ${nome}`);
+
+    res.json({
+        mensagem: 'Teste recebido',
+    });
+});
+
 // Rota para enviar uma mensagem de um usuário para outro
 app.post('/enviar-mensagem', (req, res) => {
     const { idRemetente, idDestinatario, mensagem } = req.body;
