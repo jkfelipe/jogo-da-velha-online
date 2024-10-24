@@ -10,7 +10,7 @@ export default function handler(req, res) {
         const idUsuario = uuidv4();  // Gerando um UUID único
         usuarios[idUsuario] = { mensagens: [] };
 
-        console.log(`Novo usuário registrado: ${idUsuario}`);
+        console.log('Novo usuário registrado: ${idUsuario}');
 
         res.json({
             mensagem: 'Usuário registrado com sucesso!',

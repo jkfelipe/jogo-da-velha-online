@@ -23,7 +23,7 @@ app.post('/registrar', (req, res) => {
 });
 
 
-// Rota para registrar um novo usuário
+// Rota para registrar um novo usuáriorun dev
 app.get('/testar-comunicacao', (req, res) => {
 
     const nome = req.query.nome;
