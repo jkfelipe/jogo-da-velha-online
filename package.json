@@ -1,18 +1,16 @@
 {
-  "name": "jogo-da-velha-online",
-  "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "express": "^4.21.1",
-    "nodemon": "^3.1.7",
-    "uuid": "^10.0.0"
+    "next": "latest",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
