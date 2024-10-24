@@ -1,30 +1,45 @@
-// pages/api/jogo-da-velha.js
+let board = Array(9).fill(null);
+let isXNext = true;
+
+const calculateWinner = (squares) => {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+};
 
 export default function handler(req, res) {
+  if (req.method === 'POST') {
+    const { index } = req.body;
 
-  //recebendo solicitaçõs por POST
-  const { method } = req
+    if (board[index] || calculateWinner(board)) {
+      return res.status(400).json({ error: "Invalid move" });
+    }
 
-  switch (method) {
+    board[index] = isXNext ? 'X' : 'O';
+    isXNext = !isXNext;
 
-    case 'POST':
-      const { acao } = req.query;
-
-      if (!acao) {
-        return res.status(400).json({ error: 'A variável "testar" não foi fornecida.' });
-      }
-
-      if (acao === 'teste') {
-        return res.status(200).json({ message: 'Você enviou "teste" na query string.' });
-      } else if (acao === 'outroValor') {
-        return res.status(200).json({ message: 'Você enviou "outroValor" na query string.' });
-      } else {
-        return res.status(200).json({ message: `Você enviou "${testar}" na query string.` });
-      }
-      
-    default:
-      res.setHeader('Allow', ['GET', 'POST']);
-      return res.status(405).end(`Método ${method} não permitido`);
-      
+    const winner = calculateWinner(board);
+    return res.status(200).json({ board, winner });
   }
+
+  if (req.method === 'GET') {
+    return res.status(200).json({ board, isXNext });
+  }
+
+  res.setHeader('Allow', ['POST', 'GET']);
+  res.status(405).end(`Method ${req.method} Not Allowed`);
 }
