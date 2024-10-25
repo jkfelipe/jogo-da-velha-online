@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 export default function Home() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [winner, setWinner] = useState(null);
+  const [jogadas, setJogadas] = useState(null);
   
   const fetchBoard = async () => {
     const response = await fetch('/api/jogo-da-velha');
@@ -21,15 +22,31 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ index }),
+      body: JSON.stringify({ index }),     
     });
 
     if (response.ok) {
       const data = await response.json();
+      setJogadas(jogadas+1);
       setBoard(data.board);
       setWinner(data.winner);
     } else {
       console.error('Invalid move');
+    }
+  };
+
+  const resetGame = async () => {
+    const response = await fetch('/api/jogo-da-velha', {
+      method: 'DELETE',    
+    });
+
+    if (response.ok) {
+      setBoard(Array(9).fill(null)); // Reseta o tabuleiro
+      // setIsXNext(true); // Define que o jogador "X" joga primeiro   
+      setWinner(null); 
+      setJogadas(null);  
+    } else {
+      console.error('Erro ao resetar game');
     }
   };
 
@@ -48,6 +65,7 @@ export default function Home() {
             </div>
           ))}
         </div>
+        {jogadas>0 && <button onClick={resetGame} className="mt-6 bg-purple-500 text-white px-4 py-2 rounded"> Novo Jogo </button>}
         {winner && <p className="text-white text-center mt-6">{winner} venceu!</p>}
       </div>
     </div>

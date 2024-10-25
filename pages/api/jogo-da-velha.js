@@ -36,10 +36,16 @@ export default function handler(req, res) {
     return res.status(200).json({ board, winner });
   }
 
+  if (req.method === 'DELETE'){
+      board = Array(9).fill(null);
+      isXNext = true;// Define que o jogador "X" joga primeiro
+      return res.status(200).send();
+  }
+
   if (req.method === 'GET') {
     return res.status(200).json({ board, isXNext });
   }
 
-  res.setHeader('Allow', ['POST', 'GET']);
+  res.setHeader('Allow', ['POST', 'GET', 'DELETE']);
   res.status(405).end(`Method ${req.method} Not Allowed`);
 }
