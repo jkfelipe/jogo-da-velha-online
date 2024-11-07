@@ -61,7 +61,7 @@ export default function Home() {
         {/* Div que centraliza os botões */}
         <div className="flex justify-center mb-6">
           <Link href="/">
-            <button className="bg-purple-500 text-white px-4 py-2 rounded mr-2">
+            <button className="bg-green-500 text-white px-4 py-2 rounded mr-2">
               Player vs Bot
             </button>
           </Link>
@@ -69,7 +69,7 @@ export default function Home() {
           {jogadas > 0 && (
             <button
               onClick={resetGame}
-              className="bg-purple-500 text-white px-4 py-2 rounded"
+              className="bg-green-500 text-white px-4 py-2 rounded"
             >
               Novo Jogo
             </button>
@@ -81,7 +81,7 @@ export default function Home() {
             <div
               key={index}
               onClick={() => handleClick(index)}
-              className="w-24 h-24 flex justify-center items-center bg-transparent border-4 border-purple-500 hover:bg-gray-800 cursor-pointer"
+              className="w-24 h-24 flex justify-center items-center bg-transparent border-4 border-green-500 hover:bg-gray-800 cursor-pointer"
             >
               <span className="text-5xl text-white">{value}</span>
             </div>

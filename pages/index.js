@@ -86,10 +86,8 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <button onClick={resetGame} className="mt-6 bg-purple-500 text-white px-4 py-2 rounded">
-          Novo Jogo
-        </button>
-        {winner && <p className="text-white text-center mt-6">{winner} venceu!</p>}
+        {winner && winner !== "Empate" && <p className="text-white text-center mt-6">{winner} venceu!</p>}
+        {winner && winner === "Empate" && <p className="text-white text-center mt-6">Empate!</p>}
         {jogadas === 5 && !winner && (
           <p className="text-white text-center mt-6">Não houve ganhadores!</p>
         )}
