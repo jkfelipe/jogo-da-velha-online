@@ -7,6 +7,7 @@ export default function Home() {
   const [jogadas, setJogadas] = useState(null);
   
   const fetchBoard = async () => {
+    resetGame();
     const response = await fetch('/api/jogo-da-velha');
     const data = await response.json();
     setBoard(data.board);
