@@ -91,6 +91,11 @@ export default function Home() {
         {jogadas === 5 && !winner && (
           <p className="text-white text-center mt-6">Não houve ganhadores!</p>
         )}
+        <Link href="/minimax">
+              <button className="bg-purple-500 text-white px-4 py-2 mt-6 rounded mr-2">
+                Experimente o algorítmo minimax
+              </button>
+            </Link>
       </div>
     </div>
   );
