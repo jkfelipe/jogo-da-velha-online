@@ -2,6 +2,8 @@
 
 Este é um projeto de Jogo da Velha desenvolvido em JavaScript e React, que inclui um bot que utiliza o algoritmo **Minimax** para fazer jogadas estratégicas contra o usuário. O bot é projetado para otimizar suas chances de ganhar ou empatar o jogo.
 
+[Veja uma demo](https://tictactoe.trentin.eti.br/)
+
 ## Funcionalidades
 
 - **Modo de Jogo**: Player vs. Bot (jogador contra a máquina) e Player vs. Player.
@@ -54,7 +56,7 @@ Com base nessas pontuações, o bot seleciona a jogada que maximiza sua pontuaç
 
 ### Exemplo de Uso
 1. O usuário começa o jogo fazendo a primeira jogada no tabuleiro.
-2. O bot processa a jogada e faz seu movimento calculado pelo Minimax, com um pequeno atraso para simular a "pensatividade" do bot.
+2. O bot processa a jogada e faz seu movimento calculado pelo Minimax.
 3. O jogo continua até que haja um vencedor ou empate.
 
 ### Contato
